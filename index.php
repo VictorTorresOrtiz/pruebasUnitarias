@@ -3,7 +3,7 @@
 include "app/Dulces.php";
 $dulce1 = new Dulces("Donut", 7, 2);
 
-echo "<strong>" . $dulce1 -> nombre . "</strong>";
+echo  $dulce1 -> nombre;
 echo "<br>Número: " . $dulce1 -> getNumero(); 
 echo "<br>Precio: " . $dulce1 -> getPrecio() . " euros"; 
 echo "<br>Precio con IVA: " . $dulce1 -> getPrecioConIVA() . " euros<br>";
