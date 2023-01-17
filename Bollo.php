@@ -1,26 +1,15 @@
 <?php
-class Bollo extends Dulce{
+    include_once "Dulces.php";
 
-private bool $relleno;
-
-public function __construct(String $nombre, int $numero, int $precio, bool $relleno){
-    parent::__construct($nombre, $numero, $precio);
-    $this-> relleno = $relleno;
-}
-
-public function getRelleno(){
-
-    if($this->relleno == true){
-        return "Si";
-    }else{
-        return "No";
+    class Bollo extends Dulces{
+        private $relleno;
+        public function __construct($nombre,$numero,$precio,$relleno){
+            parent::__construct($nombre,$numero,$precio);
+            $this->relleno=$relleno;
+        }
+        public function muestraResumen(){
+            parent:: muestraResumen();
+            echo "<br>Relleno: $this->relleno";
+        }
     }
-    
-}
 
-public function muestraResumen(){
-
-    echo "<br>Relleno: " . $this -> relleno;    
-}
-
-}

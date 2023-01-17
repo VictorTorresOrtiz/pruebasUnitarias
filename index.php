@@ -1,7 +1,7 @@
 <?php
 
 include "app/Dulces.php";
-$dulce1 = new Dulce("Donut", 7, 2);
+$dulce1 = new Dulces("Donut", 7, 2);
 
 echo "<strong>" . $dulce1 -> nombre . "</strong>";
 echo "<br>Número: " . $dulce1 -> getNumero(); 
