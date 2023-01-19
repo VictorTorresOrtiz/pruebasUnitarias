@@ -1,5 +1,7 @@
-<?php 
-    class Dulces{
+<?php
+use PHPUnit\Framework\Testcase;
+
+    class Dulces extends TestCase{
     private $nombre;
     protected $numero;
     private $precio;
