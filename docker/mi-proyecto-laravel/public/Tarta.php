@@ -1,6 +1,5 @@
 <?php
 include "Dulces.php";
-// include "autoload.php";
 class Tarta extends Dulces{
     public $rellenos=array();
     private $numPisos;

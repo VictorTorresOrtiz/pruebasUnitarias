@@ -1,6 +1,6 @@
 <?php
 include "Bollo.php";
 
-$bolloC=new Bollo("Bollo",2,32,"Chocolte");
+$bolloC=new Bollo("Cream",2,32,"Nata");
 $bolloC->muestraResumen();
 ?>

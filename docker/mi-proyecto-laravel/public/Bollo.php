@@ -1,6 +1,5 @@
-<?php
+<?php 
     include_once "Dulces.php";
-
     class Bollo extends Dulces{
         private $relleno;
         public function __construct($nombre,$numero,$precio,$relleno){
@@ -12,4 +11,4 @@
             echo "<br>Relleno: $this->relleno";
         }
     }
-
+?>

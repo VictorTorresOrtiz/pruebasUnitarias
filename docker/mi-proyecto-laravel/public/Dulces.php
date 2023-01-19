@@ -24,7 +24,7 @@
     }
     public function muestraResumen(){
         echo "<br>Nombre: <strong>" . $this->nombre . "</strong>"; 
-        echo "<br>Nº de dulce: " . $this->getNumero() . ""; 
+        echo "<br>Numero de dulce: " . $this->getNumero() . ""; 
         echo "<br>Precio: " . $this->getPrecio() . " euros"; 
         echo "<br>Precio IVA incluido: " . $this->getPrecioConIVA() . " euros";
     }
