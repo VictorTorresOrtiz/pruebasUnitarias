@@ -1,4 +1,9 @@
 <?php
+
+
+include_once("vendor/autoload.php");
+
+
 class Cliente
 {
     public $nombre;
@@ -21,37 +26,38 @@ class Cliente
     {
         $this->numero = $numero;
     }
+    public function setNumPedidosEfectuados($numPedido)
+    {
+        $this->numPedidosEfectuados = $numPedido;
+    }
     public function getNumPedidosEfectuados()
     {
         return $this->numPedidosEfectuados;
     }
-    public function muestraResumen()
+
+    public function listaDeDulces(Dulces $candy)
     {
-        echo "Nombre: $this->nombre";
-        echo "<br>$this->numPedidosEfectuados";
-    }
-    public function listaDeDulces(Dulces $d)
-    {
-        if (in_array($d, $this->dulcesComprados)) {
+        if (in_array($candy, $this->dulcesComprados)) {
             return true;
         } else {
             return false;
         }
     }
-    public function comprar(Dulces $d)
+    public function comprar(Dulces $candy)
     {
+        try {
+            array_push($this->dulcesComprados, $candy);
+            $this->setNumPedidosEfectuados($this->getNumPedidosEfectuados() + 1);
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
 
-        // if ($this->listaDeDulces($d)) {
-            $this->numDulcesComprados++;
-            $this->numPedidosEfectuados++;
-            echo ("<h3>Dulce comprado correctamente</h3>");
-            array_push($this->dulcesComprados, $d);
-        // }
-        // }else if(!$this->listaDeDulces(($d))&&$this->numDulcesComprados>=1){
-        //     echo("<h3>No se pudo efectuar la compra ya que ha superado el maximo de dulces</h3>");
-        // } else if (!$this->listaDeDulces(($d)) && $this->numDulcesComprados >= 1) {
-            
-        // }
+    public function muestraResumen()
+    {
+        return "<li>Nombre: $this->nombre</li>        
+            <ul><li>Número de pedidos efectuados: " . $this->getNumPedidosEfectuados() . "</li></ul>";
     }
 
 }

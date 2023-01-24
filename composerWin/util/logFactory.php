@@ -1,9 +1,9 @@
 <?php
 namespace util;
+include_once("vendor/autoload.php");
 
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
-use PhpParser\Node\Return_;
 use Psr\Log\LoggerInterface;
 
 class LogFactory{
