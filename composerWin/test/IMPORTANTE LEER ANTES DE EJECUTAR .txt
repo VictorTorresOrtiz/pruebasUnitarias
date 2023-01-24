@@ -1,0 +1,7 @@
+TENGO UN ERROR AL EJECUTAR EL PHPUNIT UTILIZANDO EL SCRIPT DEBIDO A UN FALLO DE COMPATIBILIDAD (SUPUESTAMENTE EN UN PAQUETE LLAMADO PEARL) https://stackoverflow.com/questions/58165806/phpunit-is-not-running-in-laravel
+
+PERO FUNCIONA UTILIZANDOLO DE ESTA MANERA
+
+./vendor/bin/phpunit --testdox --colors test/testPasteleria.php
+
+

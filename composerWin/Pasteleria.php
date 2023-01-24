@@ -22,7 +22,7 @@ include_once('./util/LogFactory.php');
      *
      * @var array
      */
-    private $productos = array();    
+    private $productos = [];    
     /**
      * numProductos
      *
@@ -54,6 +54,46 @@ include_once('./util/LogFactory.php');
         $this->$nombre=$nombre;
         $this->log = LogFactory::getLogger();
     }
+        
+    /**
+     * getNombre
+     *
+     * @return string
+     */
+    public function getNombre(): string
+    {
+        return $this->nombre;
+    }    
+    /**
+     * setNombre
+     *
+     * @param  mixed $nombre
+     * @return void
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+    }    
+    /**
+     * getNumProductos
+     *
+     * @return void
+     */
+    public function getNumProductos()
+    {
+        return count($this->productos);
+    }
+    
+    /**
+     * getNumClientes
+     *
+     * @return void
+     */
+    public function getNumClientes()
+    {
+        return count($this->clientes);
+    }
+
     
     /**
      * incluirProducto
