@@ -1,40 +1,85 @@
 <?php
-include "Dulces.php";
-// include "autoload.php";
-class Tarta extends Dulces{
-    public $rellenos=array();
-    private $numPisos;
-    private $minNumComensales;
-    private $maxNumComensales;
-    public function __construct($nombre,$numero,$precio,$rellenos,$numPisos,$minNumComensales,$maxNumComensales){
-        parent::__construct($nombre,$numero,$precio);
-        $this->rellenos=$rellenos;
-        $this->numPisos=$numPisos;
-        $this->minNumComensales=$minNumComensales;
-        $this->maxNumComensales=$maxNumComensales;
+include_once 'vendor/autoload.php';
+
+class Tarta extends Dulces
+{
+
+    private $rellenos = [];
+    public function __construct(
+        string $nombre,
+        int $numero,
+        float $precio,
+        private int $numPisos,
+
+        private int $minNumComensales = 2,
+        private int $maxNumComensales = 2
+
+    ) {
+        parent::__construct($nombre, $numero, $precio);
     }
-    public function muestraComensalesPosibles(){
-        if($this->minNumComensales==1 && $this->maxNumComensales==1){
-            echo "Para un comensal";
-        }else if($this->minNumComensales==$this->maxNumComensales){
-            echo "Para $this->minNumComensales comensales";
-        }else{
-            echo "De $this->minNumComensales a $this->maxNumComensales comensales";
+
+    public function getNumPisos(): int
+    {
+        return $this->numPisos;
+    }
+
+    public function setNumPisos($numPisos): void
+    {
+        $this->numPisos = $numPisos;
+    }
+
+    public function getMinNumComensales(): int
+    {
+        return $this->minNumComensales;
+    }
+
+    public function setMinNumComensales($minNumComensales): void
+    {
+        $this->minNumComensales = $minNumComensales;
+    }
+
+    public function getMaxNumComensales(): int
+    {
+        return $this->maxNumComensales;
+    }
+
+    public function setMaxNumComensales($maxNumComensales): void
+    {
+        $this->maxNumComensales = $maxNumComensales;
+    }
+
+    public function getRellenos()
+    {
+        return $this->rellenos;
+    }
+
+    public function setRellenos($rellenos): void
+    {
+        if (count($rellenos) == $this->getNumPisos()) {
+            foreach ($rellenos as $relleno) {
+                array_push($this->rellenos, $relleno);
+            }
+        } else {
+            echo "Error: la tarta debe tener el mismo número de rellenos que de pisos";
         }
     }
+
+    public function muestraComensalesPosibles()
+    {
+        if ($this->getMinNumComensales() == $this->getMaxNumComensales()) {
+            echo "Para " . $this->getMaxNumComensales() . " comensales";
+        } else {
+            echo "Para entre " . $this->getMinNumComensales() . " y " . $this->getMaxNumComensales() . " comensales";
+        }
+    }
+
     public function muestraResumen(): void
     {
-        parent:: muestraResumen();
-        echo "<br>";
-        echo "Rellenos:";
-        foreach($this->rellenos as $r){
-            echo "<ol>";
-            echo "-$r";
-            echo"</ol>";
+        $rellenos = "";
+        foreach ($this->getRellenos() as $relleno) {
+            $rellenos .= $relleno . " ";
         }
-        echo "Pisos: $this->numPisos";
-        echo "<br>";
-        echo $this->muestraComensalesPosibles(); 
+        echo parent::muestraResumen() . "<p>Número de pisos: " . $this->getNumPisos() . "</p><p>Rellenos: " . $rellenos . "</p>";
     }
 }
 ?>

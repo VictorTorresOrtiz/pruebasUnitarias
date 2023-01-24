@@ -1,11 +1,11 @@
 <?php
 
-include_once("vendor/autoload.php");
-include_once 'util/logFactory.php';
+include_once 'vendor/autoload.php';
+include_once 'util/LogFactory.php';
 include_once '../util/ClienteNoEncontradoException.php';
-include_once '../util/DulceNoEncontradoException.php.php';
+include_once '../util/DulceNoEncontradoException.php';
 
-use src\util\LogFactory;
+use util\LogFactory;
 use Monolog\Logger;
 
 class Pasteleria {
