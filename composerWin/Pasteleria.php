@@ -3,8 +3,11 @@ use Monolog\Logger;
 use util\LogFactory;
 use util\ClienteNoEncontradoException;
 use util\DulceNoEncontradoException;
-include_once('./util/PasteleriaException.php');
-include_once('./util/DulceNoEncontradoException.php');
+
+include_once "Cliente.php";
+include_once "Tarta.php";
+include_once "Bollo.php";
+include_once "Chocolate.php";
 include_once('./util/LogFactory.php');
     
     /**
@@ -104,7 +107,7 @@ include_once('./util/LogFactory.php');
     private function incluirProducto(Dulces $dulce){
         array_push($this->productos,$dulce);
         $this->numProductos=$this->numProductos+1;
-        return $this;
+
     }    
     /**
      * incluirTarta
@@ -137,7 +140,7 @@ include_once('./util/LogFactory.php');
         $bollo = new Bollo($nombre,$numero,$precio,$relleno);
         $this->incluirProducto($bollo);
         $this->numProductos=$this->numProductos+1;
-        return $this;
+        
     }    
     /**
      * incluirChocolate
@@ -153,7 +156,7 @@ include_once('./util/LogFactory.php');
         $chocolate = new Chocolate($nombre,$numero,$precio,$porcentajeCacao,$peso);
         $this->incluirProducto($chocolate);
         $this->numProductos=$this->numProductos+1;
-        return $this;
+        
     }    
     /**
      * incluirCliente
@@ -166,7 +169,7 @@ include_once('./util/LogFactory.php');
         $cliente = new Cliente($nombre,$numero);
         array_push($this->clientes,$cliente);
         $this->numClientes=$this->numClientes+1;
-        return $this;
+       
     }    
     /**
      * listarProductos
