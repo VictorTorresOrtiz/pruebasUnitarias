@@ -7,7 +7,7 @@ use Monolog\Logger;
 use Psr\Log\LoggerInterface;
 
 class LogFactory{
-    public static function getLogger (string $canal = "miLog"): LoggerInterface{
+    public static function getLogger (string $canal = "milog"): LoggerInterface{
         $log = new Logger($canal);
         $log->pushHandler(new StreamHandler("log/milog.log", Logger::DEBUG));
 

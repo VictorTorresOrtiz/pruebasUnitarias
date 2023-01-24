@@ -5,7 +5,7 @@ include_once("./autoload.php");
 include_once("PasteleriaException.php");
 
 
-use src\util\PasteleriaException;
+use PasteleriaException;
 
 class ClienteNoEncontradoException extends PasteleriaException
 {

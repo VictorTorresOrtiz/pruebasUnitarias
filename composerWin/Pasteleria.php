@@ -1,7 +1,7 @@
 <?php
 
 include_once("vendor/autoload.php");
-include_once("./composerWin/util/LogFactory.php");
+include_once 'util/logFactory.php';
 include_once '../util/ClienteNoEncontradoException.php';
 include_once '../util/DulceNoEncontradoException.php.php';
 
@@ -141,7 +141,7 @@ class Pasteleria {
                 if ($dulce->getNumero() == $numeroDulce) {
                     $p = $dulce;
                     $existeDulce = true;
-                    //Una vez encontrados ambos, realizamos la acción de comprar
+                    
                     if ($c->comprar($p)) {
                         $this->log->alert("Se ha realizado la compra", [$numeroCliente, $numeroDulce]);
                         echo "<p>Se ha realizado la compra</p>";
@@ -161,23 +161,6 @@ class Pasteleria {
         }
     } 
     
-
-
-    public function muestraResumen():void
-    {
-        echo '<b>Resumen pastelería:</b><br>********************<br>' . '<b>Nombre = </b>' . $this->nombre .
-            '<br><b>Número de productos que hay en la pastelería = </b>' . $this->numProductos .
-            '<br><b>Número de clientes que hay en la pastelería = </b>' . $this->numClientes .
-            '<br><br><b>Productos de la pastelería:</b><br>-----------------------<br>';
-            for ($i = 0; $i < $this->numProductos; $i++) {
-            echo '<br><br>' . $this->getProductos()[$i]->muestraResumen();
-        }
-        '<br><b>Número de clientes que hay en la pastelería = </b>' . $this->numClientes .
-        '<br><br>Productos de la pastelería:<br>-----------------------<br>';
-        for ($i = 0; $i < $this->numClientes; $i++) {
-            echo '<br><br>' . $this->getClientes()[$i]->muestraResumen();
-        }
-    }
 }
     
 ?>
