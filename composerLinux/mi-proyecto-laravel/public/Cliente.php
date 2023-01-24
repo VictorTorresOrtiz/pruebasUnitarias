@@ -4,7 +4,7 @@ use util\DulceNoCompradoException;
 use Monolog\Logger;
 use util\LogFactory;
 
-include_once('./util/LogFactory.php');
+include_once('util/LogFactory.php');
 
 class Cliente
 {    

@@ -1,5 +1,5 @@
 <?php 
-use Monolog\Logger;
+use \Monolog\Logger;
 use util\LogFactory;
 use util\ClienteNoEncontradoException;
 use util\DulceNoEncontradoException;
@@ -8,7 +8,7 @@ include_once "Cliente.php";
 include_once "Tarta.php";
 include_once "Bollo.php";
 include_once "Chocolate.php";
-include_once('./util/LogFactory.php');
+include_once('/util/LogFactory.php');
 
     
     /**
