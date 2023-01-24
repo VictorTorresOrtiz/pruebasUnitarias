@@ -1,18 +1,58 @@
 <?php
 include "Dulces.php";
-// include "autoload.php";
-class Tarta extends Dulces{
-    public $rellenos=array();
-    private $numPisos;
-    private $minNumComensales;
-    private $maxNumComensales;
+
+/**
+ * Tarta
+ */
+class Tarta extends Dulces{    
+    /**
+     * rellenos
+     *
+     * @var array
+     */
+    public $rellenos=[];    
+    /**
+     * numPisos
+     *
+     * @var mixed
+     */
+    private $numPisos;    
+    /**
+     * minNumComensales
+     *
+     * @var mixed
+     */
+    private $minNumComensales;    
+    /**
+     * maxNumComensales
+     *
+     * @var mixed
+     */
+    private $maxNumComensales;    
+    /**
+     * __construct
+     *
+     * @param  mixed $nombre
+     * @param  mixed $numero
+     * @param  mixed $precio
+     * @param  mixed $rellenos
+     * @param  mixed $numPisos
+     * @param  mixed $minNumComensales
+     * @param  mixed $maxNumComensales
+     * @return void
+     */
     public function __construct($nombre,$numero,$precio,$rellenos,$numPisos,$minNumComensales,$maxNumComensales){
         parent::__construct($nombre,$numero,$precio);
         $this->rellenos=$rellenos;
         $this->numPisos=$numPisos;
         $this->minNumComensales=$minNumComensales;
         $this->maxNumComensales=$maxNumComensales;
-    }
+    }    
+    /**
+     * muestraComensalesPosibles
+     *
+     * @return void
+     */
     public function muestraComensalesPosibles(){
         if($this->minNumComensales==1 && $this->maxNumComensales==1){
             echo "Para un comensal";
@@ -21,7 +61,12 @@ class Tarta extends Dulces{
         }else{
             echo "De $this->minNumComensales a $this->maxNumComensales comensales";
         }
-    }
+    }    
+    /**
+     * muestraResumen
+     *
+     * @return void
+     */
     public function muestraResumen() :void {
         parent:: muestraResumen();
         echo "<br>";
