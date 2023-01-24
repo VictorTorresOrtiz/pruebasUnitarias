@@ -1,23 +1,15 @@
-<?php 
-    include_once "Dulces.php";    
+<?php
+    include_once "Dulces.php";   
+    
     /**
-     * Chocolate
+     * Clase Chocolate extiende de Dulces
      */
     class Chocolate extends Dulces{        
-        /**
-         * porcentajeCacao
-         *
-         * @var mixed
-         */ 
+
         private $porcentajeCacao;        
-        /**
-         * peso
-         *
-         * @var mixed
-         */
         private $peso;        
         /**
-         * __construct
+         * Contructor
          *
          * @param  mixed $nombre
          * @param  mixed $numero

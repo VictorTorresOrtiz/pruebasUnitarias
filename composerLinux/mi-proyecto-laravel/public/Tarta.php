@@ -47,7 +47,33 @@ class Tarta extends Dulces{
         $this->numPisos=$numPisos;
         $this->minNumComensales=$minNumComensales;
         $this->maxNumComensales=$maxNumComensales;
-    }    
+    }  
+    public function getNumPisos(): int
+    {
+        return $this->numPisos;
+    }
+
+    public function setNumPisos($numPisos): void
+    {
+        $this->numPisos = $numPisos;
+    }
+
+    public function getRellenos()
+    {
+        return $this->rellenos;
+    }
+
+    public function setRellenos($rellenos): void
+    {
+        if (count($rellenos) == $this->getNumPisos()) {
+            foreach ($rellenos as $relleno) {
+                array_push($this->rellenos, $relleno);
+            }
+        } else {
+            echo "Error: la tarta debe tener el mismo número de rellenos que de pisos";
+        }
+    }
+
     /**
      * muestraComensalesPosibles
      *
