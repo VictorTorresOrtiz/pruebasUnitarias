@@ -12,6 +12,10 @@ class ComposerStaticInitad34f3763e0f1c917e6a562d5652911d
     );
 
     public static $prefixLengthsPsr4 = array (
+        'S' => 
+        array (
+            'Src\\Log\\' => 8,
+        ),
         'P' => 
         array (
             'Psr\\Log\\' => 8,
@@ -23,13 +27,16 @@ class ComposerStaticInitad34f3763e0f1c917e6a562d5652911d
         ),
         'D' => 
         array (
-            'Dwes\\Log\\' => 9,
             'Doctrine\\Instantiator\\' => 22,
             'DeepCopy\\' => 9,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'Src\\Log\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
+        ),
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/src',
@@ -41,10 +48,6 @@ class ComposerStaticInitad34f3763e0f1c917e6a562d5652911d
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
-        ),
-        'Dwes\\Log\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src',
         ),
         'Doctrine\\Instantiator\\' => 
         array (
