@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'dwes/log',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '97a791778e494ef8b71a7f2d57855c9067eae667',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -20,9 +20,9 @@
             'dev_requirement' => true,
         ),
         'dwes/log' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '97a791778e494ef8b71a7f2d57855c9067eae667',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
