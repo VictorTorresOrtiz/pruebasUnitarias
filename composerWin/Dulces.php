@@ -1,42 +1,29 @@
 <?php
 include_once("Resumible.php");
-/**
- *  CLASES ABSTRACTAS-
- *  Las clases abstractas son clases que sólo pueden ser heredadas y definen métodos para las clases que las extienden
- * 
- * ¿Hace falta que también los hijos implementen la interfaz?
- * No hace falta, ya que al heredar de esta también implementan la interfaz, teniendo acceso a 
-  * la o las funciones de la interfaz
- */    
 
     /**
-     * Dulces
-     */    
+     *  CLASES ABSTRACTAS-
+     *  Las clases abstractas son clases que sólo pueden ser heredadas y definen métodos para las clases que las extienden
+     * 
+     * ¿Hace falta que también los hijos implementen la interfaz?
+     * No hace falta, ya que al heredar de esta también implementan la interfaz, teniendo acceso a 
+     * la o las funciones de la interfaz
+    */     
     
     abstract class Dulces implements Resumible{    
     /**
-     * nombre
+     * Variables
      *
      * @var mixed
      */
     private $nombre;    
-    /**
-     * numero
-     *
-     * @var mixed
-     */
     protected $numero;    
+    private $precio;
+    const IVA=21/100; 
+    
     
     /**
-     * precio
-     *
-     * @var mixed
-     */
-    private $precio;
-    const IVA=21/100;
-        
-    /**
-     * __construct
+     * Contruccytor
      *
      * @param  mixed $nombre
      * @param  mixed $numero
@@ -49,39 +36,24 @@ include_once("Resumible.php");
         $this->precio=$precio;
     }    
     /**
-     * getPrecioConIva
-     *
-     * @return void
+     * Getters y Setters
      */
     public function getPrecioConIva(){
         return $this->precio + $this->precio* $this::IVA;
     }    
-    /**
-     * getNombre
-     *
-     * @return void
-     */
     public function getNombre(){
         return $this->nombre;
     }    
-    /**
-     * getPrecio
-     *
-     * @return void
-     */
     public function getPrecio(){
         return $this->precio;
     }    
-    /**
-     * getNumero
-     *
-     * @return void
-     */
     public function getNumero(){
         return $this->numero;
     }    
+
+        
     /**
-     * muestraResumen
+     * Monstrar resumen
      *
      * @return void
      */

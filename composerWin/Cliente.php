@@ -7,16 +7,28 @@ use util\LogFactory;
 include_once('./util/LogFactory.php');
 
 class Cliente
-{
+{    
+    /**
+     * Variables
+     *
+     * @var mixed
+     */
     public $nombre;
     private $numero;
-    private $dulcesComprados = array();
+    private $dulcesComprados = [];
     private $numDulcesComprados;
     private $numPedidosEfectuados;
-
     private Logger $log;     
 
-
+    
+    /**
+     * Construcctor
+     *
+     * @param  mixed $nombre
+     * @param  mixed $numero
+     * @param  mixed $numPedidosEfectuados
+     * @return void
+     */
     public function __construct($nombre, $numero, $numPedidosEfectuados = 0)
     {
         $this->nombre = $nombre;
@@ -24,7 +36,12 @@ class Cliente
         $this->numPedidosEfectuados = $numPedidosEfectuados;
         $this->log = LogFactory::getLogger();
 
-    }
+    }    
+    /**
+     * Getters y Setters
+     *
+     * @return void
+     */
     public function getNombre()
     {
         return $this->nombre;
@@ -44,12 +61,10 @@ class Cliente
     public function getNumPedidosEfectuados()
     {
         return $this->numPedidosEfectuados;
-    }
-    public function muestraResumen()
-    {
-        echo "Nombre: $this->nombre";
-        echo "<br>$this->numPedidosEfectuados";
-    }
+    }    
+    /**
+     * listaDeDulces
+     */
     public function listaDeDulces(Dulces $d)
     {
         if (in_array($d, $this->dulcesComprados)) {
@@ -84,6 +99,12 @@ class Cliente
         foreach ($this->getDulcesComprados() as $dc) {
             echo "<li>".$dc->getNombre()."</li>";
         }
+    }
+
+    public function muestraResumen()
+    {
+        echo "Nombre: $this->nombre";
+        echo "<br>$this->numPedidosEfectuados";
     }
 
 }
