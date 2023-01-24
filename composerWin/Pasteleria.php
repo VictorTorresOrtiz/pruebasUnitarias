@@ -1,98 +1,183 @@
 <?php
+
+include_once("vendor/autoload.php");
+include_once("./composerWin/util/LogFactory.php");
+include_once '../util/ClienteNoEncontradoException.php';
+include_once '../util/DulceNoEncontradoException.php.php';
+
+use src\util\LogFactory;
 use Monolog\Logger;
-use util\LogFactory;
 
-include_once('./util/logFactory.php');
+class Pasteleria {
+    public string $nombre;
+    private array $productos = [];
+    private int $numProductos;
+    private array $clientes = [];
+    private int $numClientes;
 
-
-
-    class Pasteleria{
-    private $nombre;
-    private $productos = array();
-    private $numProductos;
-    private $clientes = array();
-    private $numClientes;
-
-    private Logger $log; //Creamos la variable Log
+    private Logger $log;
 
     public function __construct($nombre)
     {
-        $this->$nombre=$nombre;
+        $this->nombre = $nombre;
         $this->log = LogFactory::getLogger();
     }
 
-    private function incluirProducto(Dulces $dulce){
-        array_push($this->productos,$dulce);
-        $this->numProductos=$this->numProductos+1;
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
         return $this;
     }
-    public function incluirTarta($nombre,$numero,$precio,$numPisos,$rellenos,$minC,$maxC){
-        $tarta = new Tarta($nombre,$numero,$precio,$numPisos, $rellenos, $minC, $maxC);
-        array_push($this->productos,$tarta);
-        $this->numProductos=$this->numProductos+1;
+
+    public function getProductos()
+    {
+        return $this->productos;
+    }
+
+    public function setProductos($productos)
+    {
+        $this->productos = $productos;
+
         return $this;
     }
-    public function incluirBollo($nombre,$numero,$precio,$relleno){
-        $bollo = new Bollo($nombre,$numero,$precio,$relleno);
-        array_push($this->productos,$relleno);
-        $this->numProductos=$this->numProductos+1;
+
+    public function getClientes()
+    {
+        return $this->clientes;
+    }
+
+    public function setClientes($clientes)
+    {
+        $this->clientes = $clientes;
+
         return $this;
     }
-    public function incluirChocolate($nombre,$numero,$precio,$porcentajeCacao,$peso){
-        $chocolate = new Chocolate($nombre,$numero,$precio,$porcentajeCacao,$peso);
-        array_push($this->productos,$chocolate);
-        $this->numProductos=$this->numProductos+1;
-        return $this;
-    }
-    public function incluirCliente($nombre,$numero){
-        $cliente = new Cliente($nombre,$numero);
-        array_push($this->clientes,$cliente);
-        $this->numClientes=$this->numClientes+1;
-        return $this;
-    }
-    public function listarProductos(){
-        echo "Número de productos: $this->numProductos <br>";
-        $listadoProd =  [];
-        foreach($this->productos as $p){
-            array_push($listadoProd,$p->nombre);
+ 
+    private function incluirProducto(Dulces $producto) {
+        if (in_array($producto, $this->productos)) {
+            echo "Este producto ya existe.";
+        } else {
+            $this->productos[$this->numProductos] = $producto;
+            echo "Producto Incluido " . $this->numProductos + 1; 
+            $this->numProductos++;
         }
-        foreach($listadoProd as $p){
-            echo "<li> $p </li>";
-        }
+
     }
-    public function listarClientes(){
-        echo "Número de clientes: $this->numClientes <br>";
-        $listadoCli =  [];
-        foreach($this->clientes as $c){
-            array_push($listadoCli,$c->nombre);
-        }
-        foreach($listadoCli as $c){
-            echo "<li> $c </li>";
-        }
+
+    public function incluirTarta($nombre, $numero, $precio, $numPisos, $rellenos, $minC, $maxC) {
+        $tarta = new Tarta($nombre, $numero, $precio, $numPisos, $rellenos, $minC, $maxC);
+        $this->incluirProducto($tarta);
     }
-    public function comprarClienteProducto($numeroCliente,$numeroDulce){
-        $socio= false;
-        $producto= false;
-            foreach ($this->clientes as $cli) {
-                if ($cli->getNumero() == $numeroCliente) {
-                    $socio= true;
-                    foreach ($this->productos as $dulce) {
-                        if ($dulce->getNumero() == $numeroDulce) {
-                            $producto = true;
-                            $cli->comprar($dulce);
-                            }
-                        }
-                }
-            }
-            if(!$producto){
-                //throw new SoporteNoEncontradoException("<h3>Error: no existe ese soporte</h3>");
-            }
-            if(!$socio){
-                //throw new ClienteNoEncontradoException("<h3 ->Error: socio no registrado</h3>");
-            }
-            return $this;
+
+    public function incluirBollo($nombre, $numero, $precio, $rellenos) {
+        $bollo = new Bollo($nombre, $numero, $precio, $rellenos);
+        $this->incluirProducto($bollo);
+    }
+
+    public function incluirChocolate($nombre, $numero, $precio, $porcentajeCacao, $peso) {
+        $chocolate = new Chocolate($nombre, $numero, $precio, $porcentajeCacao, $peso);
+        $this->incluirProducto($chocolate);
+    }
+
+    public function incluirCliente($nombre, $numero) {
+        $cliente = new Cliente($nombre, $numero);
+        
+        if (in_array($cliente, $this->clientes)) {
+            echo "Este cliente ya existe";
+        } else {
+            $this->clientes[$this->numClientes] = $cliente;
+            echo "Cliente añadido " . $this->numClientes + 1;
+            $this->numClientes++;
         }
     
+    }
+
+    public function listarProductos() {
+        echo "<p>Listado de   productos disponibles:" . $this->numProductos; 
+        if ($this->numProductos == 0) {
+            echo"<br>No hay stock";
+        } else {
+            for ($i=0;$i<$this->numProductos;$i++){ 
+                echo "<br><br>"; 
+                $this->getProductos()[$i]->muestraResumen(); 
+            } 
+        }
+    }
+
+    public function listarClientes() {
+        echo "<p>Listado de los  socios del videoclub:" .$this->numClientes; 
+        if ($this->numClientes == 0) {
+            echo"<br>No existen clientes registrados";
+        } else {
+            for ($i=0;$i<$this->numClientes;$i++){ 
+                echo "<br><br>"; 
+                $this->getClientes()[$i]->muestraResumen(); 
+            } 
+        }
+    }
+
+    public function comprarClienteProducto($numeroCliente, $numeroDulce)
+    {
+        $existeDulce = false;
+        $clienteExiste = false;
+        try {
+            foreach ($this->getClientes() as $cliente) {
+                if ($cliente->getNumero() == $numeroCliente) {
+                    $c = $cliente;
+                    $clienteExiste = true;
+                }
+            }
+            if (!$clienteExiste) {
+                $this->log->error("Cliente no encontrado", [$numeroCliente]);
+                throw new ClienteNoEncontradoException("<p>Cliente no encontrado</p>");
+            }
+            foreach ($this->getProductos() as $dulce) {
+                if ($dulce->getNumero() == $numeroDulce) {
+                    $p = $dulce;
+                    $existeDulce = true;
+                    //Una vez encontrados ambos, realizamos la acción de comprar
+                    if ($c->comprar($p)) {
+                        $this->log->alert("Se ha realizado la compra", [$numeroCliente, $numeroDulce]);
+                        echo "<p>Se ha realizado la compra</p>";
+                    } else {
+                        echo "<p>Error en la compra</p>";
+                    }
+                }
+            }
+            if (!$existeDulce) {
+                $this->log->warning("Dulce no encontrado", [$numeroDulce]);
+                throw new DulceNoEncontradoException("<p>Dulce no encontrado</p>");
+            }
+        } catch (DulceNoEncontradoException $e) {
+            echo $e->getMessage();
+        } catch (ClienteNoEncontradoException $e) {
+            echo $e->getMessage();
+        }
+    } 
+    
+
+
+    public function muestraResumen():void
+    {
+        echo '<b>Resumen pastelería:</b><br>********************<br>' . '<b>Nombre = </b>' . $this->nombre .
+            '<br><b>Número de productos que hay en la pastelería = </b>' . $this->numProductos .
+            '<br><b>Número de clientes que hay en la pastelería = </b>' . $this->numClientes .
+            '<br><br><b>Productos de la pastelería:</b><br>-----------------------<br>';
+            for ($i = 0; $i < $this->numProductos; $i++) {
+            echo '<br><br>' . $this->getProductos()[$i]->muestraResumen();
+        }
+        '<br><b>Número de clientes que hay en la pastelería = </b>' . $this->numClientes .
+        '<br><br>Productos de la pastelería:<br>-----------------------<br>';
+        for ($i = 0; $i < $this->numClientes; $i++) {
+            echo '<br><br>' . $this->getClientes()[$i]->muestraResumen();
+        }
+    }
 }
     
 ?>

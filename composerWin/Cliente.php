@@ -8,7 +8,7 @@ class Cliente
 {
     public $nombre;
     private $numero;
-    private $dulcesComprados = array();
+    private $dulcesComprados = [];
     private $numDulcesComprados;
     private $numPedidosEfectuados;
 

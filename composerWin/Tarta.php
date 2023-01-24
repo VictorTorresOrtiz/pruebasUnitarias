@@ -22,7 +22,8 @@ class Tarta extends Dulces{
             echo "De $this->minNumComensales a $this->maxNumComensales comensales";
         }
     }
-    public function muestraResumen(){
+    public function muestraResumen(): void
+    {
         parent:: muestraResumen();
         echo "<br>";
         echo "Rellenos:";
