@@ -38,5 +38,21 @@ class Cliente
             return false;
         }
     }
+    public function comprar(Dulces $d)
+    {
+
+        // if ($this->listaDeDulces($d)) {
+            $this->numDulcesComprados++;
+            $this->numPedidosEfectuados++;
+            echo ("<h3>Dulce comprado correctamente</h3>");
+            array_push($this->dulcesComprados, $d);
+        // }
+        // }else if(!$this->listaDeDulces(($d))&&$this->numDulcesComprados>=1){
+        //     echo("<h3>No se pudo efectuar la compra ya que ha superado el maximo de dulces</h3>");
+        // } else if (!$this->listaDeDulces(($d)) && $this->numDulcesComprados >= 1) {
+            
+        // }
+    }
+
 }
 ?>

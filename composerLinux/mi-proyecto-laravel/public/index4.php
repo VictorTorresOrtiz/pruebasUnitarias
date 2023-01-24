@@ -1,5 +1,5 @@
 <?php
 include "Tarta.php";
-$tartaCumple=new Tarta("Feliz Cumpleaños rey",2,32,["Nata","Chocolate","Crema"],3,1,4);
-$tartaCumple->muestraResumen();
+$tarta=new Tarta("tarta",2,32,["cremilla","Chocolate","masCremaPerro"],5,1,4);
+$tarta->muestraResumen();
 ?>
