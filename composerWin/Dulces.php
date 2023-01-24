@@ -1,5 +1,6 @@
 <?php 
-    class Dulces{
+include_once("vendor/autoload.php");
+    abstract  class Dulces implements Resumible{
     private $nombre;
     protected $numero;
     private $precio;
@@ -10,23 +11,24 @@
         $this->numero=$numero;
         $this->precio=$precio;
     }
-    public function getPrecioConIva(){
-        return $this->precio + $this->precio* $this::IVA;
-    }
+    
     public function getNombre(){
         return $this->nombre;
     }
     public function getPrecio(){
         return $this->precio;
     }
+    public function getPrecioConIva(){
+        return $this->precio + $this->precio* $this::IVA;
+    }
     public function getNumero(){
         return $this->numero;
     }
-    public function muestraResumen(){
-        echo "<br>Nombre: <strong>" . $this->nombre . "</strong>"; 
-        echo "<br>Nº de dulce: " . $this->getNumero() . ""; 
-        echo "<br>Precio: " . $this->getPrecio() . " euros"; 
-        echo "<br>Precio IVA incluido: " . $this->getPrecioConIVA() . " euros";
+    public function muestraResumen(): void //Introducimos VOID por la interfaz creada anteriormente
+    {
+        echo "<p>Nombre: $this->nombre</p>        
+        <p>Precio: " . $this->getPrecio() . " euros</p>
+        <p>Precio con IVA: " . $this->getPrecioConIva() . " euros</p>";
     }
     
 }
