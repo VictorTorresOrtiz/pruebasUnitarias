@@ -1,15 +1,13 @@
 <?php
 include_once("Resumible.php");
-/*
-   -CLASES ABSTRACTAS-
-   Las clases abstractas son clases que sólo pueden ser heredadas, y definen métodos para las clases que las extienden
-   Esto traslada un funcionamiento obligatorio a sus clases hijas
-   Mejora la calidad del código y ayudan a reducir la cantidad de código duplicado.
-   ------------------------------------------------------------
-   -¿Hace falta que también los hijos implementen la interfaz?-
-   No hace falta, ya que al heredar de esta también implementan la interfaz, teniendo acceso a 
-   la o las funciones de la interfaz
-*/ 
+/**
+ *  CLASES ABSTRACTAS-
+ *  Las clases abstractas son clases que sólo pueden ser heredadas y definen métodos para las clases que las extienden
+ * 
+ * ¿Hace falta que también los hijos implementen la interfaz?
+ * No hace falta, ya que al heredar de esta también implementan la interfaz, teniendo acceso a 
+  * la o las funciones de la interfaz
+ */
     abstract class Dulces implements Resumible{
     private $nombre;
     protected $numero;
@@ -35,8 +33,7 @@ include_once("Resumible.php");
     }
     public function muestraResumen(){
         echo "<br>Nombre: <strong>" . $this->nombre . "</strong>"; 
-        echo "<br>Nº de dulce: " . $this->getNumero() . ""; 
-        echo "<br>Precio: " . $this->getPrecio() . " euros"; 
+        echo "<br>Numero de dulce: " . $this->getNumero() . ""; 
         echo "<br>Precio IVA incluido: " . $this->getPrecioConIVA() . " euros";
     }
     

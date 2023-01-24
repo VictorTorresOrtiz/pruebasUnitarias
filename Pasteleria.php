@@ -72,26 +72,30 @@ include_once('./util/LogFactory.php');
     public function comprarClienteProducto($numeroCliente,$numeroDulce){
         $socio= false;
         $producto= false;
+        try {
             foreach ($this->clientes as $cli) {
                 if ($cli->getNumero() == $numeroCliente) {
-                    $socio= true;
+                    $socio = true;
                     foreach ($this->productos as $dulce) {
                         if ($dulce->getNumero() == $numeroDulce) {
                             $producto = true;
                             $cli->comprar($dulce);
-                            }
                         }
+                    }
                 }
             }
-            if(!$producto){
-            $this->log->critical("El dulce no se encuentra",[$producto]);
+            if (!$producto) {
+                $this->log->critical("El dulce no se encuentra", [$producto]);
                 throw new DulceNoEncontradoException("<h3>Error: no existe ese dulce</h3>");
             }
-            if(!$socio){
-                $this->log->warning("El socio no se encuentra",[$socio]);
+            if (!$socio) {
+                $this->log->warning("El socio no se encuentra", [$socio]);
                 throw new ClienteNoEncontradoException("<h3 ->Error: socio no registrado</h3>");
             }
-            return $this;
+        }catch (DulceNoEncontradoException $e){
+            
+
+        }
         }
     
 }
