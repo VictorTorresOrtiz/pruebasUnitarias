@@ -3,7 +3,7 @@
         'name' => 'dwes/log',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '97a791778e494ef8b71a7f2d57855c9067eae667',
+        'reference' => '25f36f3f98fded68d1044e9f667222dcafe24514',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,16 +22,16 @@
         'dwes/log' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '97a791778e494ef8b71a7f2d57855c9067eae667',
+            'reference' => '25f36f3f98fded68d1044e9f667222dcafe24514',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'monolog/monolog' => array(
-            'pretty_version' => '2.8.0',
-            'version' => '2.8.0.0',
-            'reference' => '720488632c590286b88b80e62aa3d3d551ad4a50',
+            'pretty_version' => '3.2.0',
+            'version' => '3.2.0.0',
+            'reference' => '305444bc6fb6c89e490f4b34fa6e979584d7fa81',
             'type' => 'library',
             'install_path' => __DIR__ . '/../monolog/monolog',
             'aliases' => array(),
@@ -139,7 +139,7 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0.0 || 2.0.0 || 3.0.0',
+                0 => '3.0.0',
             ),
         ),
         'sebastian/cli-parser' => array(

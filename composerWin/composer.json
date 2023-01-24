@@ -3,7 +3,7 @@
     "description": "Pruebas Monolog",
     "type": "project",
     "require": {
-        "monolog/monolog": "^2.8"
+        "monolog/monolog": "^3.2"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5"
