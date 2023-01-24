@@ -1,4 +1,11 @@
-<?php 
+<?php
+use Monolog\Logger;
+use util\LogFactory;
+
+include_once('./util/logFactory.php');
+
+
+
     class Pasteleria{
     private $nombre;
     private $productos = array();
@@ -6,9 +13,12 @@
     private $clientes = array();
     private $numClientes;
 
+    private Logger $log; //Creamos la variable Log
+
     public function __construct($nombre)
     {
         $this->$nombre=$nombre;
+        $this->log = LogFactory::getLogger();
     }
 
     private function incluirProducto(Dulces $dulce){
